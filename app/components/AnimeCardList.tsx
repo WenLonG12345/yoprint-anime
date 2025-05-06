@@ -2,7 +2,8 @@ import { getAllAnime } from "@/services/api/anime";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect } from "react";
 import AnimeCard from "./AnimeCard";
-import { useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
+import Container from "./Container";
 
 interface IAnimeCardList {
   searchValue: string;
@@ -10,6 +11,7 @@ interface IAnimeCardList {
 
 const AnimeCardList: React.FC<IAnimeCardList> = ({ searchValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const listQuery = useQuery({
     queryKey: [
@@ -28,18 +30,16 @@ const AnimeCardList: React.FC<IAnimeCardList> = ({ searchValue }) => {
   });
 
   useEffect(() => {
-    if (searchValue || searchValue !== "") {
-      setSearchParams((prev) => ({
-        ...prev,
-        q: searchValue,
-      }));
-    }
+    setSearchParams((prev) => ({
+      ...prev,
+      q: searchValue,
+    }));
   }, [searchValue]);
 
   const renderContent = () => {
     if (listQuery.isLoading) {
       return (
-        <div className="grid grid-cols-4 gap-4 pt-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
           {Array(8)
             .fill(null)
             .map((_, index) => (
@@ -58,15 +58,19 @@ const AnimeCardList: React.FC<IAnimeCardList> = ({ searchValue }) => {
     }
 
     return (
-      <div className="grid grid-cols-4 gap-4 pt-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
         {listQuery.data?.data?.map((item) => (
-          <AnimeCard key={item.mal_id} anime={item} />
+          <AnimeCard
+            key={item.mal_id}
+            anime={item}
+            onClick={() => navigate(`/${item.mal_id}`)}
+          />
         ))}
       </div>
     );
   };
 
-  return <div className="container mx-auto">{renderContent()}</div>;
+  return <Container>{renderContent()}</Container>;
 };
 
 export default AnimeCardList;

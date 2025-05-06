@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
+button {
+  cursor: pointer;
+}
+
 @theme {
-  --container-default: 1200px; /* max container width before it stops growing */
-  --container-padding: 1rem; /* padding on the sides of containers */
-  --container-margin: auto; /* center the container */
+  --container-default: 1200px;
+  --container-padding: 1rem;
+  --container-margin: auto;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;

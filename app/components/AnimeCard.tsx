@@ -5,9 +5,14 @@ import clsx from "clsx";
 interface IAnimeCard {
   anime?: Anime;
   isLoading?: boolean;
+  onClick?: () => void;
 }
 
-const AnimeCard: React.FC<IAnimeCard> = ({ anime, isLoading = false }) => {
+const AnimeCard: React.FC<IAnimeCard> = ({
+  anime,
+  isLoading = false,
+  onClick,
+}) => {
   if (isLoading) {
     return (
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -27,6 +32,7 @@ const AnimeCard: React.FC<IAnimeCard> = ({ anime, isLoading = false }) => {
       className={clsx(
         "bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
       )}
+      onClick={onClick}
     >
       <div className="relative h-48 overflow-hidden">
         <img

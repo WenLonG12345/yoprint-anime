@@ -1,4 +1,8 @@
-import type { Anime, AnimeListRequest, AnimeListResponse } from "@/types/anime";
+import type {
+  AnimeDetailsResponse,
+  AnimeListRequest,
+  AnimeListResponse,
+} from "@/types/anime";
 import axiosUtils from "@/utils/axiosUtils";
 
 export const getAllAnime = async (
@@ -7,6 +11,8 @@ export const getAllAnime = async (
   return await axiosUtils.get("/v4/anime", { params: payload });
 };
 
-export const getAnimeById = async (id: string): Promise<Anime> => {
+export const getAnimeById = async (
+  id: string
+): Promise<AnimeDetailsResponse> => {
   return await axiosUtils.get(`/v4/anime/${id}/full`);
 };

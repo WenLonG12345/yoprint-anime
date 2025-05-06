@@ -129,3 +129,7 @@ export type AnimeListResponse = {
   pagination?: AnimeListPagination;
   data?: Anime[];
 };
+
+export type AnimeDetailsResponse = {
+  data?: Anime;
+}
