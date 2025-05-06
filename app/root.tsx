@@ -32,6 +32,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>YoPrint Anime</title>
+        <meta name="description" content="YoPrint Anime" />
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-touch-icon.png"
+          sizes="180x180"
+        />
+        <link rel="mask-icon" href="/mask-icon.svg" color="#FFFFFF" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="manifest" href="/manifest.json" />
         <Meta />
         <Links />
       </head>

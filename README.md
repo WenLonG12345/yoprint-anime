@@ -1,87 +1,29 @@
-# Welcome to React Router!
+# YoPrint Anime
 
-A modern, production-ready template for building full-stack React applications using React Router.
+YoPrint Anime is a web application for browsing and exploring anime content. Built with modern web technologies and optimized for performance.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 📋 Features
 
-## Features
+- Browse anime collections
+- Search and filter functionality
+- Responsive design for all devices
+- Offline capabilities (PWA)
+- Fast loading and navigation
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## 🛠️ Tech Stack
 
-## Getting Started
+- **React**: Frontend UI library
+- **TypeScript**: Type-safe JavaScript
+- **React Router**: File-based routing
+- **React Query**: Data fetching and cache management
+- **PWA**: Progressive Web App capabilities for offline use
 
-### Installation
+## 📸 Screenshots
 
-Install the dependencies:
+### Home Page
+![Desktop](./screenshots/1.png)
+![Mobile](./screenshots/3.png)
 
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+### Anime Details
+![Desktop](./screenshots/2.png)
+![Mobile](./screenshots/4.png)

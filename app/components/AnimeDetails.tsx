@@ -62,20 +62,20 @@ const AnimeDetails: React.FC<IAnimeDetails> = ({ animeId }) => {
         <div className="mt-4 md:mt-0">
           <h1 className="font-bold text-3xl">{detailQuery.data.title}</h1>
 
-          <div className="flex flex-row gap-3 my-2">
-            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm">
+          <div className="flex flex-row gap-3 my-2 flex-wrap">
+            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm text-nowrap">
               <Calendar size={16} className="text-blue-500" />
               <span className="font-medium">
                 {detailQuery?.data?.year || "Unknown"}
               </span>
             </div>
-            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm">
+            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm text-nowrap">
               <BookmarkCheck size={16} className="text-green-500" />
               <span className="font-medium">
                 {detailQuery?.data?.status || "Unknown"}
               </span>
             </div>
-            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm">
+            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm text-nowrap">
               <Clock size={16} className="text-indigo-500" />
               <span className="font-medium">
                 {detailQuery?.data?.duration || "Unknown"}
