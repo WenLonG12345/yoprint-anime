@@ -123,6 +123,7 @@ export type AnimeListRequest = {
   page?: number;
   limit?: number;
   q?: string;
+  
 }
 
 export type AnimeListResponse = {

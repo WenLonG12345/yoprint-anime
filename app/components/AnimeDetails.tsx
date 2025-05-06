@@ -4,6 +4,8 @@ import React from "react";
 import AnimeStat from "./AnimeStat";
 import Container from "./Container";
 import { formatWithCommas } from "@/utils/number";
+import { BookmarkCheck, Calendar, Clock } from "lucide-react";
+import RelatedAnimeList from "./RelatedAnimeList";
 
 interface IAnimeDetails {
   animeId?: string;
@@ -59,6 +61,28 @@ const AnimeDetails: React.FC<IAnimeDetails> = ({ animeId }) => {
 
         <div className="mt-4 md:mt-0">
           <h1 className="font-bold text-3xl">{detailQuery.data.title}</h1>
+
+          <div className="flex flex-row gap-3 my-2">
+            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm">
+              <Calendar size={16} className="text-blue-500" />
+              <span className="font-medium">
+                {detailQuery?.data?.year || "Unknown"}
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm">
+              <BookmarkCheck size={16} className="text-green-500" />
+              <span className="font-medium">
+                {detailQuery?.data?.status || "Unknown"}
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-gray-100 px-3 py-1.5 rounded-full text-sm">
+              <Clock size={16} className="text-indigo-500" />
+              <span className="font-medium">
+                {detailQuery?.data?.duration || "Unknown"}
+              </span>
+            </div>
+          </div>
+
           <p className="text-gray-500 mt-2">{detailQuery.data.synopsis}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
@@ -90,7 +114,12 @@ const AnimeDetails: React.FC<IAnimeDetails> = ({ animeId }) => {
     );
   };
 
-  return <Container>{renderContent()}</Container>;
+  return (
+    <Container>
+      {renderContent()} 
+      <RelatedAnimeList animeId={animeId} />
+    </Container>
+  );
 };
 
 export default AnimeDetails;
