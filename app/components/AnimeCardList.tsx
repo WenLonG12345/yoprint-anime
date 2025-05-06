@@ -4,13 +4,17 @@ import React, { useEffect } from "react";
 import AnimeCard from "./AnimeCard";
 import { useNavigate, useSearchParams } from "react-router";
 import Container from "./Container";
+import Pagination from "./Pagination";
 
 interface IAnimeCardList {
   searchValue: string;
 }
 
 const AnimeCardList: React.FC<IAnimeCardList> = ({ searchValue }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({
+    page: "1",
+    limit: "10",
+  });
   const navigate = useNavigate();
 
   const listQuery = useQuery({
@@ -24,16 +28,14 @@ const AnimeCardList: React.FC<IAnimeCardList> = ({ searchValue }) => {
       return await getAllAnime({
         q: searchParams?.get("q") ?? undefined,
         page: parseInt(searchParams?.get("page") ?? "1"),
-        limit: parseInt(searchParams?.get("limit") ?? "20"),
+        limit: parseInt(searchParams?.get("limit") ?? "10"),
       });
     },
   });
 
   useEffect(() => {
-    setSearchParams((prev) => ({
-      ...prev,
-      q: searchValue,
-    }));
+    searchParams.set("q", searchValue);
+    setSearchParams(searchParams);
   }, [searchValue]);
 
   const renderContent = () => {
@@ -70,7 +72,24 @@ const AnimeCardList: React.FC<IAnimeCardList> = ({ searchValue }) => {
     );
   };
 
-  return <Container>{renderContent()}</Container>;
+  return (
+    <Container>
+      <Pagination
+        currentPage={parseInt(searchParams?.get("page") ?? "1")}
+        itemsPerPage={parseInt(searchParams?.get("limit") ?? "20")}
+        totalItems={listQuery?.data?.pagination?.items?.total || 0}
+        onPageChange={(page) => {
+          searchParams.set("page", page.toString());
+          setSearchParams(searchParams);
+        }}
+        onLimitChange={(limit) => {
+          searchParams.set("limit", limit.toString());
+          setSearchParams(searchParams);
+        }}
+      />{" "}
+      {renderContent()}
+    </Container>
+  );
 };
 
 export default AnimeCardList;

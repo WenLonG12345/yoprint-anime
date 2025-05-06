@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
 import { debounce } from "@/utils/debounce";
 import AnimeCardList from "@/components/AnimeCardList";
 import { useSearchParams } from "react-router";
